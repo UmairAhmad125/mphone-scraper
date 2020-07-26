@@ -1,8 +1,11 @@
+# frozen_string_literal: true
+
 require 'mechanize'
 require 'byebug'
 require_relative '../lib/raw_page.rb'
 require_relative '../lib/clean_data.rb'
 require_relative '../lib/delete_nil.rb'
+require_relative '../lib/make_csv.rb'
 
 def clean_price(array)
   temp_clean_array = array.split('PKR')
@@ -50,6 +53,12 @@ clean_dets = remove_empty_arr.remove_empty_product
 hs_phones_details = CleanData.new
 hs_phones_details.array = clean_dets
 h_shopping_products = hs_phones_details.details_hs
+write_hs = CsvMaker.new
+write_hs.array = h_shopping_products
+write_hs.write_file_hs
+write_is = CsvMaker.new
+write_is.array = i_shopping_products
+write_is.write_file_is
 puts h_shopping_products
 puts
 puts i_shopping_products

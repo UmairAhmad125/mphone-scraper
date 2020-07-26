@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class DeleteNil
   attr_writer :array
   def remove_empty_product

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'mechanize'
 class RawPage
   attr_writer :url

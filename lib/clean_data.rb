@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CleanData
   attr_writer :array
   attr_writer :price
