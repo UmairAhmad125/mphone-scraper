@@ -3,6 +3,7 @@
 require 'mechanize'
 require 'byebug'
 require_relative '../lib/raw_page.rb'
+require_relative '../lib/clean_data.rb'
 
 def remove_empty_product(arr)
   clean_counter = 0
@@ -24,57 +25,6 @@ def clean_price(array)
   clean_array
 end
 
-def getDetails(array, price)
-  i = 0
-  separated = {}
-  model = []
-  specs = []
-  phone_details = []
-  while i < array.length
-    temp_array = array[i].split('-')
-    tmp_array = temp_array[0]
-    warranty = temp_array[1]
-    spec_array = tmp_array.split(/ /)
-    chk_fourth = spec_array[3]
-    tmp_model = []
-    tmp_spec = []
-    if chk_fourth.length > 2 && chk_fourth[3].class == String
-      j = 0
-      while j < 3
-        tmp_model[j] = spec_array[j]
-        j += 1
-      end
-      while j < spec_array.length
-        tmp_spec[j - 3] = spec_array[j]
-        j += 1
-      end
-      model[i] = tmp_model.join(' ')
-      specs[i] = tmp_spec.join(' ')
-    else
-      j = 0
-      while j < 4
-        tmp_model[j] = spec_array[j]
-        j += 1
-      end
-      while j < spec_array.length
-        tmp_spec[j - 4] = spec_array[j]
-        j += 1
-      end
-      model[i] = tmp_model.join(' ')
-      specs[i] = tmp_spec.join(' ')
-    end
-
-    separated = {
-      model: model[i],
-      specs: specs[i],
-      warranty: warranty.to_s.strip,
-      price: price[i]
-    }
-    phone_details << separated
-    i += 1
-  end
-  phone_details
-end
 url = 'https://homeshopping.pk/categories/Samsung-Mobile-Prices-In-Pakistan/'
 url_i = 'https://www.ishopping.pk/electronics/mobile-phones-tablet-pc/mobile-phones-prices-in-pakistan/samsung.html'
 home_shopping_obj = RawPage.new
@@ -90,12 +40,16 @@ iShopping_phones_price = iShopping_phones.css('span.price').text.to_s
 hs_dets =  homeShopping_phones.css('div.product-box a').text.to_s
 dets_iSh = iShopping_phones_details.split('Samsung')
 pre_clean_dets_iSh = remove_empty_product(dets_iSh)
-clean_dets_iSh = []
+clean_dets_ish = []
 (pre_clean_dets_iSh.length - 1).times do |i|
-  clean_dets_iSh[i] = 'Samsung' + pre_clean_dets_iSh[i]
+  clean_dets_ish[i] = 'Samsung' + pre_clean_dets_iSh[i]
 end
-iSh_clean_price = clean_price(iShopping_phones_price)
-iShopping = getDetails(clean_dets_iSh, iSh_clean_price)
+ish_clean_price = clean_price(iShopping_phones_price)
+
+i_shopping_clean = CleanData.new
+i_shopping_clean.array = clean_dets_ish
+i_shopping_clean.price =  ish_clean_price
+i_shopping_products = i_shopping_clean.get_details
 dets_array = hs_dets.split("\n\n\n")
 clean_dets = remove_empty_product(dets_array)
 clean_counter = 0
