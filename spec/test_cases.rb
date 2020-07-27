@@ -75,12 +75,14 @@ describe 'CsvMaker' do
   describe 'write_file_hs' do
     it 'should write given data in hs_phones.csv file' do
       obj.array = hs_array
+      obj.write_file_hs
       expect(File.file?('hs_phones.csv')).to be(true)
     end
   end
   describe 'write_file_is' do
     it 'should write given data in is_phones.csv file' do
       obj.array = is_array
+      obj.write_file_is
       expect(File.file?('is_phones.csv')).to be(true)
     end
   end
