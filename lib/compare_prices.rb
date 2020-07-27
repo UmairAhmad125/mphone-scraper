@@ -1,5 +1,5 @@
-# frozen_string_literal: true
-
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize
 require 'byebug'
 class ComparePrices
   attr_writer :hs_array
@@ -7,11 +7,11 @@ class ComparePrices
 
   private
 
-  def comparable?(hs, is)
+  def comparable?(hs_a, is_a)
     chk = false
     i = 0
     while i < 3
-      if hs[i] == is[i]
+      if hs_a[i] == is_a[i]
         chk = true
       else
         chk = false
@@ -78,3 +78,7 @@ class ComparePrices
     final_array
   end
 end
+# rubocop:enable Metrics/AbcSize
+
+# rubocop:enable
+# rubocop:enable Metrics/MethodLength

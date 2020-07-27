@@ -1,5 +1,6 @@
-# frozen_string_literal: true
-
+# rubocop:disable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
+# rubocop:disable Metrics/MethodLength
+# rubocop:disable Metrics/AbcSize
 class CleanData
   attr_writer :array
   attr_writer :price
@@ -85,3 +86,7 @@ class CleanData
     hs_phones
   end
 end
+# rubocop:enable Metrics/AbcSize
+
+# rubocop:enable Metrics/PerceivedComplexity,Metrics/CyclomaticComplexity
+# rubocop:enable Metrics/MethodLength

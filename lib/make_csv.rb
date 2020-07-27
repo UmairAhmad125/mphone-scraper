@@ -1,7 +1,4 @@
-# frozen_string_literal: true
-
 require 'csv'
-require 'byebug'
 class CsvMaker
   attr_writer :array
   def write_file_hs

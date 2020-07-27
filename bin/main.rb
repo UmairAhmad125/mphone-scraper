@@ -1,7 +1,4 @@
-# frozen_string_literal: true
-
 require 'mechanize'
-require 'byebug'
 require_relative '../lib/raw_page.rb'
 require_relative '../lib/clean_data.rb'
 require_relative '../lib/delete_nil.rb'
