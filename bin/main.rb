@@ -6,6 +6,7 @@ require_relative '../lib/raw_page.rb'
 require_relative '../lib/clean_data.rb'
 require_relative '../lib/delete_nil.rb'
 require_relative '../lib/make_csv.rb'
+require_relative '../lib/compare_prices.rb'
 
 def clean_price(array)
   temp_clean_array = array.split('PKR')
@@ -59,6 +60,12 @@ write_hs.write_file_hs
 write_is = CsvMaker.new
 write_is.array = i_shopping_products
 write_is.write_file_is
+compare = ComparePrices.new
+compare.is_array = i_shopping_products
+compare.hs_array = h_shopping_products
+comparison_array = compare.compare
 puts h_shopping_products
 puts
 puts i_shopping_products
+puts
+puts comparison_array
