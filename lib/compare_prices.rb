@@ -1,6 +1,27 @@
 class ComparePrices
   attr_writer :hs_array
   attr_writer :is_array
+  def compare
+    hs_array = @hs_array
+    is_array = @is_array
+    hs_compare = compareable(hs_array)
+    is_compare = compareable(is_array)
+    compare_counter = 0
+    final_array = []
+    hs_compare.length.times do |i|
+      is_compare.length.times do |j|
+        next unless comparable?(hs_compare[i], is_compare[j]) && find_unique(final_array, hs_array[i])
+
+        compare_counter += 1
+        compare_hash = {
+          hs: hs_array[i],
+          is: is_array[j]
+        }
+        final_array << compare_hash
+      end
+    end
+    final_array
+  end
 
   private
 
@@ -36,7 +57,7 @@ class ComparePrices
     compareable_array
   end
 
-  def findunique(final_array, h_array)
+  def find_unique(final_array, h_array)
     chk = true
     final_array.length.times do |i|
       tmp = final_array[i].values
@@ -51,27 +72,4 @@ class ComparePrices
     chk
   end
 
-  public
-
-  def compare
-    hs_array = @hs_array
-    is_array = @is_array
-    hs_compare = compareable(hs_array)
-    is_compare = compareable(is_array)
-    compare_counter = 0
-    final_array = []
-    hs_compare.length.times do |i|
-      is_compare.length.times do |j|
-        next unless comparable?(hs_compare[i], is_compare[j]) && findunique(final_array, hs_array[i])
-
-        compare_counter += 1
-        compare_hash = {
-          hs: hs_array[i],
-          is: is_array[j]
-        }
-        final_array << compare_hash
-      end
-    end
-    final_array
-  end
 end
