@@ -1,5 +1,7 @@
-# mphone-scraper (Capstone)
-mphone-scraper scrap data of mobile phones from two differnt sites (homeshopping.pk and iShopping.pk) and generates separate csv files for data of both sites as well as it copmares the prices of mobile phones if same models are found on different sites. As there is a lot of data on both sites so this scraper only scrapes Samsung Phones but it can also work for generic mobile phones too.
+# mphone-scraper (Ruby Capstone)
+mphone-scraper scrap data of mobile phones from two different sites (homeshopping.pk and iShopping.pk) and generates separate CSV files for data of both sites as well as it compares the prices of mobile phones if same models are found on different sites. As there is a lot of data on both sites so this scraper only scrapes Samsung Phones but it can work for generic mobile phones too.
+
+![screenshot](screenshot.jpg)
 
 ## Built With
 
@@ -20,6 +22,15 @@ mphone-scraper scrap data of mobile phones from two differnt sites (homeshopping
 - CSV files are generated in project directory.
 - Note that is or Is or IS denotes iShopping and hs denotes homeShopping
 - Both above mentioned terms are website names.
+
+## Run test cases
+
+For unit testing Rspec is being used. Follow these instructions to run the tests.
+ 
+- `cd` into project
+- Run `Bundle install`
+- Run  `rspec spec/test_cases.rb`
+- Results of test cases will be visible in your terminal
 
 ## 🤝 Contributing
 

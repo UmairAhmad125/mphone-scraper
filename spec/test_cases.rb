@@ -2,7 +2,7 @@
 require_relative '../lib/clean_data'
 require_relative '../lib/compare_prices'
 require_relative '../lib/delete_nil'
-require_relative '../lib/make_csv'
+require_relative '../lib/csv_maker'
 require_relative '../lib/raw_page'
 require 'mechanize'
 

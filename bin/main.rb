@@ -3,7 +3,7 @@ require 'mechanize'
 require_relative '../lib/raw_page.rb'
 require_relative '../lib/clean_data.rb'
 require_relative '../lib/delete_nil.rb'
-require_relative '../lib/make_csv.rb'
+require_relative '../lib/csv_maker'
 require_relative '../lib/compare_prices.rb'
 
 def clean_price(array)
