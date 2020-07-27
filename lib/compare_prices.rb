@@ -1,6 +1,3 @@
-# rubocop:disable Metrics/MethodLength
-# rubocop:disable Metrics/AbcSize
-require 'byebug'
 class ComparePrices
   attr_writer :hs_array
   attr_writer :is_array
@@ -78,7 +75,3 @@ class ComparePrices
     final_array
   end
 end
-# rubocop:enable Metrics/AbcSize
-
-# rubocop:enable
-# rubocop:enable Metrics/MethodLength

@@ -7,6 +7,7 @@ mphone-scraper scrap data of mobile phones from two differnt sites (homeshopping
 
 ## Getting Started
 
+- [Install Ruby](https://www.ruby-lang.org/en/documentation/installation/) 
 - To clone enter this command in your terminal 
 - `git clone https://@github.com:UmairAhmad125/mphone-scraper.git`
 - `cd` into the project directory
