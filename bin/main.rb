@@ -1,3 +1,5 @@
+#!/usr/bin/env ruby
+
 require 'mechanize'
 require_relative '../lib/raw_page.rb'
 require_relative '../lib/clean_data.rb'
@@ -25,7 +27,7 @@ def hs_url
   hs_page
 end
 
-def is_url
+def i_s_url
   url_i = 'https://www.ishopping.pk/electronics/mobile-phones-tablet-pc/mobile-phones-prices-in-pakistan/samsung.html'
   i_shopping_obj = RawPage.new
   i_shopping_obj.url = url_i
@@ -54,15 +56,15 @@ def hs_refined_data
   h_shopping_products
 end
 
-def is_search
-  i_shopping_phones = is_url.search('div.inner-grid')
+def i_s_search
+  i_shopping_phones = i_s_url.search('div.inner-grid')
   i_shopping_phones_details = i_shopping_phones.css('h2.product-name a').text.to_s
   dets_ish = i_shopping_phones_details.split('Samsung')
   dets_ish
 end
 
-def is_pre_refined_data
-  pre_clean_dets_ish = remove_empty_array(is_search)
+def i_s_pre_refined_data
+  pre_clean_dets_ish = remove_empty_array(i_s_search)
   clean_dets_ish = []
   (pre_clean_dets_ish.length - 1).times do |i|
     clean_dets_ish[i] = 'Samsung' + pre_clean_dets_ish[i]
@@ -70,17 +72,17 @@ def is_pre_refined_data
   clean_dets_ish
 end
 
-def is_price
-  i_shopping_phones = is_url.search('div.inner-grid')
+def i_s_price
+  i_shopping_phones = i_s_url.search('div.inner-grid')
   i_shopping_phones_price = i_shopping_phones.css('span.price').text.to_s
   ish_clean_price = clean_price(i_shopping_phones_price)
   ish_clean_price
 end
 
-def is_refined_data
+def i_s_refined_data
   i_shopping_clean = CleanData.new
-  i_shopping_clean.array = is_pre_refined_data
-  i_shopping_clean.price = is_price
+  i_shopping_clean.array = i_s_pre_refined_data
+  i_shopping_clean.price = i_s_price
   i_shopping_products = i_shopping_clean.details
   i_shopping_products
 end
@@ -89,16 +91,16 @@ write_hs = CsvMaker.new # write hs_phones in file
 write_hs.array = hs_refined_data
 write_hs.write_file_hs
 write_is = CsvMaker.new # write is_phones in file
-write_is.array = is_refined_data
+write_is.array = i_s_refined_data
 write_is.write_file_is
 
 compare = ComparePrices.new # compare similar phone models
-compare.is_array = is_refined_data
+compare.is_array = i_s_refined_data
 compare.hs_array = hs_refined_data
 comparison_array = compare.compare
 
 puts hs_refined_data
 puts
-puts is_refined_data
+puts i_s_refined_data
 puts
 puts comparison_array
