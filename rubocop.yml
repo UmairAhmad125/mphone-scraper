@@ -5,7 +5,7 @@
     - "Rakefile"
   DisplayCopNames: true
 Layout/LineLength:
-  Max: 120
+  Max: 500
 Metrics/MethodLength:
   Max: 120
 Metrics/AbcSize:

@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby
-
 require 'mechanize'
 require_relative '../lib/raw_page.rb'
 require_relative '../lib/clean_data.rb'

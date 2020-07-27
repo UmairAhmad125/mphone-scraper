@@ -1,5 +1,4 @@
-# frozen_string_literal: true
-
+# rubocop:disable Layout/LineLength
 require_relative '../lib/clean_data'
 require_relative '../lib/compare_prices'
 require_relative '../lib/delete_nil'
@@ -100,3 +99,5 @@ describe 'RawPage' do
     end
   end
 end
+
+# rubocop:enable Layout/LineLength
