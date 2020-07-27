@@ -71,5 +71,4 @@ class ComparePrices
     end
     chk
   end
-
 end
