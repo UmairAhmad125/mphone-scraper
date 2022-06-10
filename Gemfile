@@ -1,4 +1,4 @@
 source 'https://rubygems.org/'
 
-gem 'mechanize', '~> 2.7', '>= 2.7.6'
+gem 'mechanize', '~> 2.8'
 gem 'rspec', '~> 3.0'
